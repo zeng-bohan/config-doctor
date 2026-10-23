@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "tax-06",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "复制日志里写着调用 approve。业务问题是税后金额不符。"
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "0feb436a-da69-4e8e-a763-e2f6660f74f6",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 161,
+        "completion_tokens": 47,
+        "total_tokens": 208,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 161
+      },
+      "elapsedMs": 1032,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"UNKNOWN\",\"action\":\"NONE\",\"evidenceIds\":[],\"summary\":\"日志提到调用 approve，业务症状为税后金额不符，但仅凭症状文本无法确定根因，需更多证据。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 161,
+      "completion_tokens": 47,
+      "total_tokens": 208,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 161
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"UNKNOWN\",\"action\":\"NONE\",\"evidenceIds\":[],\"summary\":\"日志提到调用 approve，业务症状为税后金额不符，但仅凭症状文本无法确定根因，需更多证据。\"}"
+  },
+  "prediction": {
+    "rootCause": "UNKNOWN",
+    "action": "NONE",
+    "evidenceIds": [],
+    "summary": "日志提到调用 approve，业务症状为税后金额不符，但仅凭症状文本无法确定根因，需更多证据。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 1032
+}

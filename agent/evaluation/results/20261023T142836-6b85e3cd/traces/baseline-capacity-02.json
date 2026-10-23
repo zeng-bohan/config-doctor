@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "capacity-02",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "只提交两件商品也被拒绝，库存容量可能不足。"
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "dbc34892-20fb-4a05-8019-4cbcbb412288",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 160,
+        "completion_tokens": 47,
+        "total_tokens": 207,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 160
+      },
+      "elapsedMs": 953,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"CAPACITY\",\"action\":\"RESTORE_CAPACITY\",\"evidenceIds\":[],\"summary\":\"仅提交两件商品即被拒绝，提示库存容量可能不足，符合容量类根因。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 160,
+      "completion_tokens": 47,
+      "total_tokens": 207,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 160
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"CAPACITY\",\"action\":\"RESTORE_CAPACITY\",\"evidenceIds\":[],\"summary\":\"仅提交两件商品即被拒绝，提示库存容量可能不足，符合容量类根因。\"}"
+  },
+  "prediction": {
+    "rootCause": "CAPACITY",
+    "action": "RESTORE_CAPACITY",
+    "evidenceIds": [],
+    "summary": "仅提交两件商品即被拒绝，提示库存容量可能不足，符合容量类根因。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 953
+}

@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "timeout-04",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "请求未及时返回，业务日志显示响应时间高于配置窗口。"
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "d8f812d1-7281-44ab-8bb1-5c818de70131",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 161,
+        "completion_tokens": 41,
+        "total_tokens": 202,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 161
+      },
+      "elapsedMs": 812,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"TIMEOUT\",\"action\":\"RESTORE_TIMEOUT\",\"evidenceIds\":[],\"summary\":\"响应时间超过配置窗口，请求未及时返回，符合超时特征。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 161,
+      "completion_tokens": 41,
+      "total_tokens": 202,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 161
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"TIMEOUT\",\"action\":\"RESTORE_TIMEOUT\",\"evidenceIds\":[],\"summary\":\"响应时间超过配置窗口，请求未及时返回，符合超时特征。\"}"
+  },
+  "prediction": {
+    "rootCause": "TIMEOUT",
+    "action": "RESTORE_TIMEOUT",
+    "evidenceIds": [],
+    "summary": "响应时间超过配置窗口，请求未及时返回，符合超时特征。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 812
+}

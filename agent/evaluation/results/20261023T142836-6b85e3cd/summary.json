@@ -1,0 +1,47 @@
+{
+  "runId": "20261023T142836-6b85e3cd",
+  "mode": "baseline-no-tools",
+  "datasetSha256": "d356aa2d759e6557070285502ca719b13f53061b681694c515f0282c8bcb3516",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "modelIds": [
+    "deepseek-flash"
+  ],
+  "requestedModelIds": [
+    "deepseek-flash"
+  ],
+  "modelIdentityCaseCount": 40,
+  "selectedCases": 40,
+  "familyCounts": {
+    "TIMEOUT": 8,
+    "CACHE_DRIFT": 8,
+    "CAPACITY": 8,
+    "TAX": 8,
+    "HEALTHY": 8
+  },
+  "metrics": {
+    "rootCauseCorrect": 28,
+    "rootCauseDenominator": 40,
+    "rootCauseAccuracy": 0.7,
+    "actionCorrect": 30,
+    "actionDenominator": 40,
+    "actionAccuracy": 0.75,
+    "evidenceValid": null,
+    "evidenceDenominator": 0,
+    "evidenceValidityRate": null,
+    "toolCalls": 0,
+    "toolCallErrors": 0,
+    "toolCallErrorRate": null,
+    "medianElapsedMs": 992.0,
+    "elapsedDenominator": 40,
+    "medianTotalTokens": 205.0,
+    "tokenDenominator": 40,
+    "modelCalls": 40,
+    "modelCallDenominator": 40,
+    "networkErrors": 0,
+    "recoveredFaults": null,
+    "recoveryDenominator": 0,
+    "recoveryRate": null
+  },
+  "approvalPolicy": "disabled",
+  "limit": null
+}

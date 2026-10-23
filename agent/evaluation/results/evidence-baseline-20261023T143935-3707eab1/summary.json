@@ -1,0 +1,48 @@
+{
+  "runId": "20261023T143935-3707eab1",
+  "mode": "fixed-evidence-single-call",
+  "datasetSha256": "d356aa2d759e6557070285502ca719b13f53061b681694c515f0282c8bcb3516",
+  "promptSha256": "40a8b27202018caa083db041c87e392193abdcb4bbafc30c00303563844b27e2",
+  "modelIds": [
+    "deepseek-flash"
+  ],
+  "requestedModelIds": [
+    "deepseek-flash"
+  ],
+  "modelIdentityCaseCount": 40,
+  "selectedCases": 40,
+  "familyCounts": {
+    "TIMEOUT": 8,
+    "CACHE_DRIFT": 8,
+    "CAPACITY": 8,
+    "TAX": 8,
+    "HEALTHY": 8
+  },
+  "approvalPolicy": "disabled",
+  "toolPolicy": "fixed probe then config for every case; one model call; no adaptive tool choice",
+  "metrics": {
+    "rootCauseCorrect": 40,
+    "rootCauseDenominator": 40,
+    "rootCauseAccuracy": 1.0,
+    "actionCorrect": 40,
+    "actionDenominator": 40,
+    "actionAccuracy": 1.0,
+    "evidenceValid": 40,
+    "evidenceDenominator": 40,
+    "evidenceValidityRate": 1.0,
+    "toolCalls": 80,
+    "toolCallErrors": 0,
+    "toolCallErrorRate": 0.0,
+    "medianElapsedMs": 1304.5,
+    "elapsedDenominator": 40,
+    "medianTotalTokens": 581.0,
+    "tokenDenominator": 40,
+    "modelCalls": 40,
+    "modelCallDenominator": 40,
+    "networkErrors": 0,
+    "recoveredFaults": null,
+    "recoveryDenominator": 0,
+    "recoveryRate": null
+  },
+  "limit": null
+}

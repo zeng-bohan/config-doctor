@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "tax-07",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "The net price matches, but the final taxed amount does not."
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "1ddf3565-8d95-4723-8c77-4ef881f45645",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 160,
+        "completion_tokens": 38,
+        "total_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 160
+      },
+      "elapsedMs": 968,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"TAX\",\"action\":\"RESTORE_TAX\",\"evidenceIds\":[],\"summary\":\"净价一致但含税总额不符，表明税额计算异常。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 160,
+      "completion_tokens": 38,
+      "total_tokens": 198,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 160
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"TAX\",\"action\":\"RESTORE_TAX\",\"evidenceIds\":[],\"summary\":\"净价一致但含税总额不符，表明税额计算异常。\"}"
+  },
+  "prediction": {
+    "rootCause": "TAX",
+    "action": "RESTORE_TAX",
+    "evidenceIds": [],
+    "summary": "净价一致但含税总额不符，表明税额计算异常。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 968
+}

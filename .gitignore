@@ -5,3 +5,6 @@ __pycache__/
 .env
 *.key
 .taste-skill/screenshots/
+.taste-skill/qa/
+.taste-skill/final/
+.taste-skill/final-v2/

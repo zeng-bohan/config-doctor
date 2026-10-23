@@ -46,6 +46,10 @@ python -m agent.server
 
 第二、第三条命令在仓库根执行，使用同一工作目录，以确保数据库位置可预测。数据默认写入 data/，可通过 CONFIG_DOCTOR_DB_URL 指定 H2 文件。启动失败先检查端口与 data/java.err.log。停止前备份 H2 文件，代码回滚用本地 Git 版本，不自动处理旧schema迁移。
 
+运行后的任务、证据与审批界面如下，队列为自行创建的实验记录，不是生产用户数据。
+
+![本地诊断任务与审批流程](docs/screenshots/desktop.jpg)
+
 ## API与可靠性
 
 GET /api/health 匿名健康检查。POST /api/cases 为operator创建实验场景；POST /api/tasks以幂等键创建任务；GET /api/tasks/{id}查看状态与证据。worker通过claim/checkpoint续租，调用tools/probe、tools/config、tools/logs，最终提交proposal。operator通过approve执行服务端白名单补丁。完整契约见交付目录04技术设计与 backend/api/ApiController.java。
@@ -63,6 +67,12 @@ python -m scripts.smoke
 前两条不调用真实模型。第三条需要已启动Java和真实DEEPSEEK_API_KEY，创建一次超时场景，验证模型诊断、worker无审批权限、operator修复与幂等重放。大规模评测入口与实际统计见evaluation目录及交付05报告，不能用Mock测试通过率表示AI准确率。
 
 评测集由公开实验配置与症状生成，必须记录版本、prompt哈希、实际模型ID、逐例轨迹、根因与动作正确性、证据、Token和耗时。参数变体不等于独立生产事故。仅在报告附原始结果时引用数字，不因接口可调用就声称效果达标。
+
+实际2026-10-23结果：随机caseId的Agent批次20261023T144214-b1ce8584，五族40个合成变体根因/动作各40/40，32个故障由评测器审批后全部复验通过，中位诊断3070.5ms/2275Token。固定probe/config后单次模型同样40/40，中位1304.5ms/581Token；只看症状的无工具基线为28/40根因。当前没有证据证明多轮Agent优于固定取证，不能将本闭集结果外推生产。
+
+完整摘要和原始轨迹见[评测批次登记](agent/evaluation/results/README.md)。早期带族名caseId的批次已因标签泄漏作废。引用ID有效只验证归属，不能证明解释逐句有据。以上耗时是在持久化修正前采集，不作最终配置压测结论。
+
+真实恢复验收在checkpoint确认后立即终止Java，发现H2默认写延迟会丢最新messages。最终默认URL使用WRITE_DELAY=0，脚本也用该设置；修后强杀重启恢复6条messages与3条证据，旧token拒绝，新worker真实模型续跑并修复缓存价。运行`python -m scripts.test_restart`可复验，需真实模型Key；脚本在独立18082启动自己的JVM并停止，不触碰主服务。此验证不是断电或磁盘损坏测试。
 
 ## 当前限制
 

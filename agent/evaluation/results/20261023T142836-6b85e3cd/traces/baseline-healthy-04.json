@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "healthy-04",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "复核当前结算参数，尚未观察到异常。"
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "ed3be5be-3e31-498f-be81-94cd5d0be8cf",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 156,
+        "completion_tokens": 32,
+        "total_tokens": 188,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 156
+      },
+      "elapsedMs": 984,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"HEALTHY\",\"action\":\"NONE\",\"evidenceIds\":[],\"summary\":\"结算参数复核未发现异常，当前状态正常。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 156,
+      "completion_tokens": 32,
+      "total_tokens": 188,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 156
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"HEALTHY\",\"action\":\"NONE\",\"evidenceIds\":[],\"summary\":\"结算参数复核未发现异常，当前状态正常。\"}"
+  },
+  "prediction": {
+    "rootCause": "HEALTHY",
+    "action": "NONE",
+    "evidenceIds": [],
+    "summary": "结算参数复核未发现异常，当前状态正常。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 984
+}

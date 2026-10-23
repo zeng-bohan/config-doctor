@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "cache_drift-01",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "金额核对失败，账单显示的缓存单价可能不是当前来源单价。"
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "9875b057-3078-425b-8b8a-2bd5a0f433a0",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 161,
+        "completion_tokens": 44,
+        "total_tokens": 205,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 161
+      },
+      "elapsedMs": 1094,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"CACHE_DRIFT\",\"action\":\"REFRESH_CACHE\",\"evidenceIds\":[],\"summary\":\"账单缓存单价与当前来源单价不一致，疑似缓存漂移，建议刷新缓存。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 161,
+      "completion_tokens": 44,
+      "total_tokens": 205,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 161
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"CACHE_DRIFT\",\"action\":\"REFRESH_CACHE\",\"evidenceIds\":[],\"summary\":\"账单缓存单价与当前来源单价不一致，疑似缓存漂移，建议刷新缓存。\"}"
+  },
+  "prediction": {
+    "rootCause": "CACHE_DRIFT",
+    "action": "REFRESH_CACHE",
+    "evidenceIds": [],
+    "summary": "账单缓存单价与当前来源单价不一致，疑似缓存漂移，建议刷新缓存。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 1094
+}

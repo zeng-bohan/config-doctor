@@ -1,0 +1,67 @@
+{
+  "mode": "baseline-no-tools",
+  "datasetId": "timeout-07",
+  "promptSha256": "4b8ebbb082dddf6cc8c3eb1055f4b3db8a763acb5a6c35b897376ebfad81ef3b",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You classify a synthetic local checkout symptom from the symptom text alone.\nYou receive no configuration, logs, evidence, or tools. Do not claim you inspected data.\nReturn only one JSON object with exactly these keys:\nrootCause (TIMEOUT, CACHE_DRIFT, CAPACITY, TAX, HEALTHY, or UNKNOWN),\naction (RESTORE_TIMEOUT, REFRESH_CACHE, RESTORE_CAPACITY, RESTORE_TAX, NONE),\nevidenceIds (always an empty array), summary (short Chinese explanation).\nUse UNKNOWN and NONE when the symptom alone does not support a root cause.\nNever request approval or claim that a repair was applied."
+    },
+    {
+      "role": "user",
+      "content": "The settlement call times out after the upstream became slower."
+    }
+  ],
+  "status": "COMPLETED",
+  "responses": [
+    {
+      "id": "eb5f2eeb-3fc4-459d-8b8b-33b8edc0f068",
+      "model": "deepseek-flash",
+      "usage": {
+        "prompt_tokens": 158,
+        "completion_tokens": 47,
+        "total_tokens": 205,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 158
+      },
+      "elapsedMs": 1032,
+      "message": {
+        "role": "assistant",
+        "content": "{\"rootCause\":\"TIMEOUT\",\"action\":\"RESTORE_TIMEOUT\",\"evidenceIds\":[],\"summary\":\"结算调用因上游变慢而超时，属于超时类问题，建议恢复超时配置。\"}"
+      }
+    }
+  ],
+  "usage": [
+    {
+      "prompt_tokens": 158,
+      "completion_tokens": 47,
+      "total_tokens": 205,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 158
+    }
+  ],
+  "networkErrors": [],
+  "answer": {
+    "role": "assistant",
+    "content": "{\"rootCause\":\"TIMEOUT\",\"action\":\"RESTORE_TIMEOUT\",\"evidenceIds\":[],\"summary\":\"结算调用因上游变慢而超时，属于超时类问题，建议恢复超时配置。\"}"
+  },
+  "prediction": {
+    "rootCause": "TIMEOUT",
+    "action": "RESTORE_TIMEOUT",
+    "evidenceIds": [],
+    "summary": "结算调用因上游变慢而超时，属于超时类问题，建议恢复超时配置。"
+  },
+  "modelCalls": 1,
+  "modelId": "deepseek-flash",
+  "requestedModelId": "deepseek-flash",
+  "actualModelIds": [
+    "deepseek-flash"
+  ],
+  "elapsedMs": 1032
+}
