@@ -1,0 +1,7 @@
+backend/target/
+data/
+__pycache__/
+*.pyc
+.env
+*.key
+.taste-skill/screenshots/

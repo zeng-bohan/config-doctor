@@ -1,0 +1,27 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${SERVER_PORT:18080}
+  error:
+    include-message: never
+
+spring:
+  application:
+    name: config-doctor-backend
+  datasource:
+    url: ${CONFIG_DOCTOR_DB_URL:jdbc:h2:file:./data/config-doctor;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${CONFIG_DOCTOR_DB_USER:sa}
+    password: ${CONFIG_DOCTOR_DB_PASSWORD:}
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      mode: always
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+config-doctor:
+  auth:
+    viewer-token: ${CONFIG_DOCTOR_VIEWER_TOKEN:viewer-token}
+    worker-token: ${CONFIG_DOCTOR_WORKER_TOKEN:worker-token}
+    operator-token: ${CONFIG_DOCTOR_OPERATOR_TOKEN:operator-token}
+  lease-seconds: 30
